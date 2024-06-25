@@ -1,4 +1,4 @@
-package keyword_handler
+package keyword_controller
 
 import (
 	"fmt"

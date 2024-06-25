@@ -1,0 +1,9 @@
+basePath: /
+host: localhost:8001
+info:
+  contact: {}
+  description: API for keyword management
+  title: Keyword API
+  version: "1.0"
+paths: {}
+swagger: "2.0"

@@ -1,29 +1,36 @@
 package main
 
 import (
-	keyword_handler "keyword-api/src/handlers"
+	keyword_controller "keyword-api/src/controllers"
+
+	_ "keyword-api/docs"
 
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-func createRouter() {
-	router := gin.Default()
-
-	userRoutes := router.Group("/users")
-	{
-		userRoutes.GET("/:userId/keywords", keyword_handler.GetKeywordsByUserId)
-	}
-
-	keywordRoutes := router.Group("/keywords")
-	{
-		keywordRoutes.POST("", keyword_handler.CreateKeyword)
-		keywordRoutes.PUT("/:id", keyword_handler.UpdateKeyword)
-		keywordRoutes.DELETE("/:id", keyword_handler.DeleteKeyword)
-	}
-
-	router.Run(":8001")
-}
-
+// @title Keyword API
+// @version 1.0
+// @description API for keyword management
+// @host localhost:8001
+// @BasePath /
 func main() {
-	createRouter()
+	server := gin.Default()
+	server.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	userRoutes := server.Group("/users")
+	{
+		userRoutes.GET("/:userId/keywords", keyword_controller.GetKeywordsByUserId)
+	}
+
+	keywordRoutes := server.Group("/keywords")
+	{
+		keywordRoutes.POST("", keyword_controller.CreateKeyword)
+		keywordRoutes.PUT("/:id", keyword_controller.UpdateKeyword)
+		keywordRoutes.DELETE("/:id", keyword_controller.DeleteKeyword)
+	}
+
+	server.Run(":8001")
+
 }
