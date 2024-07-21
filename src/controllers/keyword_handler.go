@@ -7,6 +7,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// CreateKeyword
+// @summary create a new keyword
+// @schemes http
+// @Accept json
+// @Success 200 "Success"
+// @Router /keyword [post]
 func CreateKeyword(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"message": "keyword created"})
 }

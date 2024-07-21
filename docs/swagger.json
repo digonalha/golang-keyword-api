@@ -8,5 +8,19 @@
     },
     "host": "localhost:8001",
     "basePath": "/",
-    "paths": {}
+    "paths": {
+        "/keyword": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "summary": "create a new keyword",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    }
 }

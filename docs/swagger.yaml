@@ -5,5 +5,13 @@ info:
   description: API for keyword management
   title: Keyword API
   version: "1.0"
-paths: {}
+paths:
+  /keyword:
+    post:
+      consumes:
+      - application/json
+      responses:
+        "200":
+          description: Success
+      summary: create a new keyword
 swagger: "2.0"
